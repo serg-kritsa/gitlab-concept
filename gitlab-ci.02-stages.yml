@@ -1,0 +1,13 @@
+stages: # init order in queue (not in parallel)
+  - test
+  - build
+
+job_01:
+  stage: test
+  script:
+    - make test
+
+job_02:
+  stage: build
+  script:
+    - make

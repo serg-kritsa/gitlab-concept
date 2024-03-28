@@ -1,0 +1,5 @@
+# job will be triggered after commit
+job_name:
+  # ruby image by default
+  script:
+    - job command # f.e. make test

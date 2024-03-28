@@ -1,0 +1,11 @@
+# _Global_ Variables REG_USER and REG_PASS should be set up in Settings > CI/CD > Variables before
+
+variables: # _Pipeline_ Variables
+  PIPELINE_VARIABLE: "set if needed"
+
+job_name:
+  variables: # _Job_ Variables
+    JOB_VARIABLE: "build"
+  # ruby image by default
+  script:
+    - npm run $JOB_VARIABLE # or any variables

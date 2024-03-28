@@ -1,0 +1,6 @@
+run_tests: # any_name_possible_for_job
+  image: python:3.9-slim-buster # needs to override
+  before_script:
+    - apt-get update && apt-get install make # needs to have make utility
+  script:
+    - make test

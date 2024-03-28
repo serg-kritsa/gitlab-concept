@@ -1,0 +1,19 @@
+
+run_tests: # any_name_possible_for_job
+  image: python:3.9-slim-buster # needs to override
+  before_script:
+    - apt-get update && apt-get install make # needs to have make utility
+  script:
+    - make test
+
+# Global Variables REG_USER and REG_PASS should be set up in Settings before
+build_image: # any_name_possible_for_job
+  image: docker:20.10.16 # docker in docker image to run docker client & deamon
+  variables: # Job Variables
+    IMAGE_NAME: dockeruser/docker-image
+    IMAGE_TAG: docker-image-tag-1.0
+  before_script:
+    - docker login -u $REG_USER -p $REG_PASS
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
